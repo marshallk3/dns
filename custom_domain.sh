@@ -16,10 +16,19 @@ if [[ "$EUID" -ne 0 ]]; then
 	exit
 fi
 
+# Check if the IP address was set
+if ["$1" == ""]
+then
+	echo "Please enter the IP address: "
+    read -r addr
+	IP=$addr 
+else
+	IP=$1 
+fi
 
 # Predefined variables
 #------------------
-IP="1.2.3.4"
+#IP="1.2.3.4"
 REVERSE="$(echo $IP | rev).in-addr.arpa"
 
 SOFTWARE="bind9"
