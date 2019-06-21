@@ -19,13 +19,13 @@ fi
 
 # Predefined variables
 #------------------
+IP="1.2.3.4"
+REVERSE="$(echo $IP | rev).in-addr.arpa"
+
 SOFTWARE="bind9"
 PATH="/etc/bind"
 
 ZONE="marshall"
-IP="1.2.3.4"
-REVERSE="$(echo $IP | rev).in-addr.arpa"
-
 PTR="dns"
 
 #------------------
@@ -48,7 +48,7 @@ zone \"$ZONE\" {
 
 }
 
-zone \"REVERSE\" {
+zone \"$REVERSE\" {
 
 	type master;
 	file \"/etc/bind/zones/$REVERSE.db\";
